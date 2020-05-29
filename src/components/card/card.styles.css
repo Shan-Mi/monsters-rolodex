@@ -10,6 +10,10 @@
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transfomr .25s ease-out;
+  display: grid;
+  grid-template-rows: 2fr .2fr .2fr;
+  place-items: center;
+  place-content: center;
 }
 
 .card-container:hover {

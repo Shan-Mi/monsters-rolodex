@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       monsters: [],
       searchField: "",
+      title: "",
     };
 
     /* bind this to this context, now this == component */
@@ -27,25 +28,25 @@ class App extends Component {
   //   this.setState({ searchField: e.target.value });
   // }
   handleChange = (e) => {
-    this.setState({ searchField: e.target.value });
+    this.setState({ searchField: e.target.value, title: e.target.value });
     /* automatically set this where it defined in the first place
        and the context is App, now it is lexical scoping
        Auto bind to */
   };
 
   render() {
-    const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter((monster) =>
-      monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
-    );
+    const { monsters, searchField, title } = this.state;
+    // const filteredMonsters = monsters.filter((monster) =>
+    //   monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
+    // );
     return (
       <div className="App">
-        <h1> Monsters Rolodex</h1>
+        <h1>{title}</h1>
         <SearchBox
           placeholder="search monsters"
           handleChange={this.handleChange}
         />
-        <CardList monsters={filteredMonsters} />
+        <CardList monsters={monsters} />
       </div>
     );
   }
